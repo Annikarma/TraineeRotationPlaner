@@ -1,0 +1,52 @@
+﻿<Window x:Class="TraineeRotationPlaner.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:TraineeRotationPlaner" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:view="clr-namespace:TraineeRotationPlaner.MVVM.View" xmlns:viewModel="clr-namespace:TraineeRotationPlaner.MVVM.ViewModel" Title="MainWindow" Width="1200" Height="630" ResizeMode="NoResize" mc:Ignorable="d">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
+
+    <Border Background="#4d5e6e" CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="992.843" />
+                <ColumnDefinition Width="7.157" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Margin="40,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" Foreground="white" Text="" />
+
+            <Border Grid.Row="1" Grid.Column="0" Height="480" Background="#4d5e6e">
+                <StackPanel Grid.Row="1" Margin="0,20,0,0">
+
+                    <!--  RadioButtons werden automatisch den Stil aus App.xaml verwenden  -->
+                    <RadioButton Height="50" Content="ÜBERSICHT" IsChecked="True" Style="{StaticResource MyMenuButtonStyle}" />
+                    <RadioButton Height="50" Command="{Binding TraineeViewCommand}" Content="AZUBIS" IsChecked="True" Style="{StaticResource MyMenuButtonStyle}" />
+                    <RadioButton Height="50" Command="{Binding ProfessionViewCommand}" Content="BERUFE" IsChecked="True" Style="{StaticResource MyMenuButtonStyle}" />
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="0" Grid.Column="1" Width="1000" Background="WhiteSmoke" Grid.ColumnSpan="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock Grid.Column="0" Margin="30,0" VerticalAlignment="Center" FontSize="44" Foreground="red" Text="ROTATIONsPLANER" />
+                    <Image Grid.Column="1" Width="100" Margin="0,0,20,0" Source="Images/logo.png" />
+                    <Image Margin="812,0,10,3" Source="/logo.png" Stretch="Fill" Grid.ColumnSpan="2" />
+                </Grid>
+            </Border>
+
+            <!--  geladenes UserControl  -->
+            <Border Grid.Row="1" Grid.Column="1" Margin="0,0,0,-14" Background="WhiteSmoke" Grid.ColumnSpan="2">
+                <ContentControl Grid.Row="1" Grid.Column="1" Width="974" Margin="20,20,0,20" HorizontalAlignment="Left" Content="{Binding CurrentView}" />
+            </Border>
+        </Grid>
+    </Border>
+</Window>

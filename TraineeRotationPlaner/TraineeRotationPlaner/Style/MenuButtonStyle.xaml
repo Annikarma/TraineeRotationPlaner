@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}" TargetType="{x:Type RadioButton}" x:Key="MyMenuButtonStyle">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{TemplateBinding Background}">
+                            <TextBlock Text="{TemplateBinding Property=Content}" VerticalAlignment="Center" Margin="50 0 0 0" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="ExtraLight" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Content" Value="ANLEGEN" />
+
+        </Style.Setters>
+
+        <Style.Triggers>
+            <!-- Trigger für IsChecked -->
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="red" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="FontWeight" Value="ExtraLight" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Trigger>
+
+            <!-- Trigger für MouseOver -->
+            <Trigger Property="IsMouseOver" Value="True">
+
+                <!-- Hinzufügen des Leuchteffekts beim Hover -->
+                <Setter Property="Foreground" Value="cyan" />
+
+            </Trigger>
+        </Style.Triggers>
+
+        <!-- Leuchteffekt für Hover-Ereignis -->
+        <Style.Resources>
+            <Storyboard x:Key="GlowEffect" AutoReverse="True" RepeatBehavior="Forever">
+                <ColorAnimation Storyboard.TargetProperty="(RadioButton.Background).(SolidColorBrush.Color)" From="Transparent" To="#00FFFF" Duration="0:0:0.5" />
+            </Storyboard>
+        </Style.Resources>
+
+    </Style>
+
+</ResourceDictionary>
