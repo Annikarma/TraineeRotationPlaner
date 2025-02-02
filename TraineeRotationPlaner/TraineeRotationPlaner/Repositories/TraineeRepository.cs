@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
+using System.Windows;
 using System.Windows.Documents;
 using TraineeRotationPlaner.Entities;
 using TraineeRotationPlaner.Mapper;
@@ -49,10 +50,10 @@ namespace TraineeRotationPlaner.Repositories
             {
                 throw new Exception("Unbekannter Fehler beim Erstellen der Trainee-Tabelle", ex);
             }
-            finally
-            {
-                Connection?.Dispose();
-            }
+            //finally
+            //{
+            //    Connection?.Dispose();
+            //}
         }
 
         public void Create(Trainee trainee)
@@ -96,14 +97,15 @@ namespace TraineeRotationPlaner.Repositories
                 throw new InvalidOperationException("Ein unbekannter Fehler trat beim Erstellen des Trainees auf.", ex);
             }
 
-            finally
-            {
-                Connection?.Close(); //ist nicht nötig,  using verwendet wird
-            }
+            //finally
+            //{
+            //    Connection?.Close(); //ist nicht nötig,  using verwendet wird
+            //}
         }
 
         public List<Trainee> Read()
         {
+
             string sql = """
                    SELECT 
             t.Id, 
@@ -141,6 +143,7 @@ namespace TraineeRotationPlaner.Repositories
             }
             catch (SqliteException ex)
             {
+                MessageBox.Show("", ex.Message);
                 // Fehler bei der Datenbankabfrage.
                 throw new SqliteException("Fehler beim Abrufen der Trainees.", ex.ErrorCode);
             }
@@ -149,10 +152,10 @@ namespace TraineeRotationPlaner.Repositories
                 // Allgemeiner Fehler bei der Verarbeitung.
                 throw new InvalidOperationException("Ein unbekannter Fehler trat beim Abrufen der Trainees auf.", ex);
             }
-            finally
-            {
-                Connection?.Close();
-            }
+            //finally
+            //{
+            //    Connection?.Close();
+            //}
         }
 
         // TODO [Info]: Ggf. wird diese Methode gar nicht mehr benötigt
@@ -187,10 +190,10 @@ namespace TraineeRotationPlaner.Repositories
             {
                 throw;
             }
-            finally
-            {
-                Connection?.Close();
-            }
+            //finally
+            //{
+            //    Connection?.Close();
+            //}
 
 
 

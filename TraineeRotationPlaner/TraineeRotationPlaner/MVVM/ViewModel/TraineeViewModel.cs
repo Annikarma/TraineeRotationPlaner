@@ -159,6 +159,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             var trainees = _traineeService.Get(); // sobald der Service da ist, werden mit get alle Trainees über das Repo aus DB gefüllt
             Trainees = new ObservableCollection<Trainee>(trainees); // Trainees binding im xaml
 
+
             SaveTraineeCommand = new RelayCommand(o =>
             {
                 Trainee trainee = new Trainee(Id, LastName, FirstName, Abbreviation, EducationStart, EducationEnd, Profession ); // Objekt für Datentransport erstellen und füllen

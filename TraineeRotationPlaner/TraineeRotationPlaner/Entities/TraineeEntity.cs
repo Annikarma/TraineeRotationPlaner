@@ -10,7 +10,7 @@
         public string EducationEnd {  get; set; } = string.Empty;
         public int EducationYear {  get; set; }
         public int ProfessionId { get; set; }
-        public string ProfessionName { get; set; } = string.Empty;
+        public string ProfessionName { get; set; } = string.Empty; // Wichtig für das Mapping!
 
         public TraineeEntity()
         {

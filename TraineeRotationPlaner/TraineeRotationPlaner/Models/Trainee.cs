@@ -31,7 +31,7 @@
             Profession = profession;
         }
 
-        // oder so?
+        // TODO: oder so?
         public Trainee(int id, string lastName, string firstName, string abbreviation, DateOnly educationStart, DateOnly educationEnd, int professionId, Profession profession)
         {
             Id = id;

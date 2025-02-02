@@ -9,7 +9,8 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
 {
     internal class ProfessionViewModel : INotifyPropertyChanged
     {
-        private ProfessionService _professionService;
+        // private ProfessionService _professionService;
+        // von hier aus direkt die static aus der Main aufrufen
 
         public int Id { get; set; }
 
@@ -59,15 +60,17 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
 
         public ProfessionViewModel()
         {
-            _professionService = new ProfessionService();
+            //_professionService = new ProfessionService();
+            // service aus mehreren klassen aufrufen.... wird erspart. weil von überalls --> ressourcen schonend !!!
+            // roslin (compiler) --> wenn variabel die verweist auf andere, dann nur referenz auf arbeitsspeicher...
 
-            var professions = _professionService.Get();
+            var professions = MainWindow.ProfessionService.Get();
             Professions = new ObservableCollection<Profession>(professions);
 
             SaveProfessionCommand = new RelayCommand(o =>
             {
                 Profession profession = new Profession(Id, Name, Abbreviation); // Objekt für Datentransport erstellen und füllen
-                _professionService.Save(profession); // Objekt über Service speichern lassen
+                MainWindow.ProfessionService.Save(profession); // Objekt über Service speichern lassen
                 Professions.Add(profession); // Hinzufügen des erfolreich gespeicherten Vacation-Objektes zur Collection/LiestView
             });           
         }

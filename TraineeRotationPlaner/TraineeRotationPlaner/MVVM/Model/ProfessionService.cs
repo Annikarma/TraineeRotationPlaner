@@ -5,7 +5,7 @@ using TraineeRotationPlaner.MVVM.Model;
 
 namespace TraineeRotationPlaner.MVVM.Model
 {
-    internal class ProfessionService
+    public class ProfessionService
     {
         private ILogger? _logger; // Das Interface fürs Logging ist zwar schon da, aber es steckt noch keine Logger-Instanz drin
         private ProfessionRepository _professionRepository;
