@@ -37,11 +37,10 @@
         <Label Content="KÜRZEL" Grid.Column="0" Grid.Row="3" Style="{StaticResource MyLabelStyle}" />
         <TextBox Grid.Column="0" Grid.Row="4" Style="{StaticResource MyTextboxStyle}" />
 
-        <!-- Zeile 9 Absenden-Button -->
+        <!-- Zeile  Absenden-Button -->
         <Label Content="BERUF" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" FontSize="27" VerticalAlignment="Top" Padding="0" Margin="0" Foreground="#bfbfbf" />
         <Button Content="LÖSCHEN" Grid.Row="9" Grid.Column="1" Command="{Binding SaveProfessionCommand}" Style="{StaticResource MyButtonStyle}" />
         <Button Content="SPEICHERN" Grid.Row="9" Grid.Column="2" Command="{Binding SaveProfessionCommand}" Style="{StaticResource MyButtonStyle}" />
-
         <!--  ListView  -->
         <ListView Grid.Row="1" Grid.Column="2" Grid.RowSpan="8" Grid.ColumnSpan="2" Margin="248,0,0,64" ItemsSource="{Binding Professions}" SelectedItem="{Binding SelectedProfession}" Style="{StaticResource MyStyledListView}">
             <ListView.View>

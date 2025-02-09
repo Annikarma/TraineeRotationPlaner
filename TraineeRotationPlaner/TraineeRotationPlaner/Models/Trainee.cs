@@ -11,6 +11,8 @@
         public string Abbreviation { get; set; } 
         public DateOnly EducationStart { get; set; } 
         public DateOnly EducationEnd { get; set; }
+        public int EducationYear { get; set; }
+        public string Homebase { get; set; }
         public int ProfessionId { get; set; } // Primär für die Speicherung
         public Profession? Profession { get; set; } // Optional für einfacheren Zugriff
 
@@ -20,7 +22,7 @@
             
         }
 
-        public Trainee(int id, string lastName, string firstName, string abbreviation, DateOnly educationStart, DateOnly educationEnd, Profession profession)
+        public Trainee(int id, string lastName, string firstName, string abbreviation, DateOnly educationStart, DateOnly educationEnd, int educationYear, string homebase, Profession profession)
         {
             Id = id;
             LastName = lastName;
@@ -28,11 +30,13 @@
             Abbreviation = abbreviation;
             EducationStart = educationStart;
             EducationEnd = educationEnd;
+            EducationYear = educationYear;
+            Homebase = homebase;
             Profession = profession;
         }
 
         // TODO: oder so?
-        public Trainee(int id, string lastName, string firstName, string abbreviation, DateOnly educationStart, DateOnly educationEnd, int professionId, Profession profession)
+        public Trainee(int id, string lastName, string firstName, string abbreviation, DateOnly educationStart, DateOnly educationEnd, int educationYear, string homebase, int professionId, Profession profession)
         {
             Id = id;
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
@@ -40,7 +44,8 @@
             Abbreviation = abbreviation ?? throw new ArgumentNullException(nameof(abbreviation));
             EducationStart = educationStart;
             EducationEnd = educationEnd;
-
+            EducationYear = educationYear;
+            Homebase = homebase;
             ProfessionId = professionId;
             Profession = profession ?? throw new ArgumentNullException(nameof(profession));
 

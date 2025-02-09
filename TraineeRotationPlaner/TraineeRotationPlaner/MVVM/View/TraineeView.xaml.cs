@@ -25,6 +25,11 @@ namespace TraineeRotationPlaner.MVVM.View
             InitializeComponent();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         //{
         //    TextBox textBox = sender as TextBox;
