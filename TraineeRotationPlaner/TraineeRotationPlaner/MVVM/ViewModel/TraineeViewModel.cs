@@ -117,6 +117,34 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             }
         }
 
+        private int _educationYear;
+        public int EducationYear
+        {
+            get
+            {
+                return _educationYear;
+            }
+            set
+            { 
+                _educationYear = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _homebase;
+        public string Homebase
+        {
+            get
+            {
+                return _homebase;
+            }
+            set
+            {
+                _homebase = value;
+                OnPropertyChanged();
+            }
+        }
+
         private Profession _profession;
         public Profession Profession
         {
@@ -152,6 +180,8 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
                 Abbreviation = _selectedTrainee.Abbreviation;
                 EducationStart = _selectedTrainee.EducationStart;
                 EducationEnd = _selectedTrainee.EducationEnd;
+                EducationYear = _selectedTrainee.EducationYear;
+                Homebase = _selectedTrainee.Homebase;
                 Profession = _selectedTrainee.Profession;              
             }
         }
@@ -170,7 +200,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
 
             SaveTraineeCommand = new RelayCommand(o =>
             {
-                Trainee trainee = new Trainee(Id, LastName, FirstName, Abbreviation, EducationStart, EducationEnd, Profession ); // Objekt für Datentransport erstellen und füllen
+                Trainee trainee = new Trainee(Id, LastName, FirstName, Abbreviation, EducationStart, EducationEnd, EducationYear, Homebase, Profession ); // Objekt für Datentransport erstellen und füllen
                 _traineeService.Save(trainee); // Objekt über den Service speichern
                 Trainees.Add(trainee); // Hinzufügen des gespeicherten Trainee-Objektes in ListView
                 var professions = MainWindow.ProfessionService.Get();  // Holt Berufe aus dem Service
@@ -233,3 +263,4 @@ Eine Bestätigungsmeldung (MessageBox.Show) informiert den Benutzer, dass die Da
 *
 Button und Command:
 Der Button in der XAML-Datei ist mit dem ExportCommand im ViewModel verbunden. Sobald der Button geklickt wird, wird die ExportToCsv-Methode aufgerufen.
+*/
