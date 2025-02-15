@@ -20,7 +20,7 @@ namespace TraineeRotationPlaner.Mapper
                 Abbreviation = source.Abbreviation,
                 EducationStart = source.EducationStart.ToString("yyyy-MM-dd"),
                 EducationEnd = source.EducationEnd.ToString("yyyy-MM-dd"),
-                ProfessionId = source.Profession.Id,
+                ProfessionId = source.ProfessionId,    // TODO geändert ProfessionId = source.Profession.Id,
             };
         }
 

@@ -8,10 +8,14 @@
         <Setter Property="Foreground" Value="#7f7f7f" />
         <Setter Property="Background" Value="#ebebeb" />
         <Setter Property="BorderBrush" Value="#cccccc" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Padding" Value="5" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="5,2" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="DemiBold" />
+    </Style>
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="White" />
     </Style>
 
 </ResourceDictionary>

@@ -15,14 +15,11 @@ namespace TraineeRotationPlaner.Repositories
     // Sie enthält Methoden zum Erstellen, Lesen, Aktualisieren und Löschen von Trainees.
     public class TraineeRepository : BaseRepository
     {
-        // Der Konstruktor wird verwendet, um die Tabelle zu erstellen, wenn die Klasse instanziiert wird.
-        // TODO: FRAGE: wann wird sie instanziiert
         public TraineeRepository()
         {
             CreateTable(); // Methode sorgt dafür, dass die Tabelle für die Trainees existiert.
         }
 
-        // TODO: Hier die Fremdschlüssel nullable machen, damit auch leere Berufe möglich sind.
         private void CreateTable()
         {
             var sql = """
@@ -76,7 +73,7 @@ namespace TraineeRotationPlaner.Repositories
             // Werte aus Trainee zu TraineeEntity konvertieren, um Datum in Text umzuwandeln
             var traineeEntity = TraineeMapper.MapToEntity(trainee);
 
-            //var 
+
 
             object param = new
             {

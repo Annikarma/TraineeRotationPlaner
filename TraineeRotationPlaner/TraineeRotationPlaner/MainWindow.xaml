@@ -39,7 +39,6 @@
 
                     <TextBlock Grid.Column="0" Margin="30,0" VerticalAlignment="Center" FontSize="44" Foreground="red" Text="ROTATIONsPLANER" />
                     <Image Grid.Column="1" Width="100" Margin="0,0,20,0" Source="Images/logo.png" />
-                    <Image Margin="812,0,10,3" Source="/logo.png" Stretch="Fill" Grid.ColumnSpan="2" />
                 </Grid>
             </Border>
 

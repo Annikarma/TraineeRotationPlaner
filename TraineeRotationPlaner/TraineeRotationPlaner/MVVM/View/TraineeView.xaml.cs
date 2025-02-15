@@ -31,6 +31,11 @@ namespace TraineeRotationPlaner.MVVM.View
 
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
         //private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         //{
         //    TextBox textBox = sender as TextBox;

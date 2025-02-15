@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace TraineeRotationPlaner.Core
 {
-    internal class ObservableObject : INotifyPropertyChanged
+    public class ObservableObject : INotifyPropertyChanged
     {
         /*
          Die Klasse ObservableObject stellt die Funktionalität bereit, um Änderungen an Eigenschaften zu melden.
@@ -13,7 +13,8 @@ namespace TraineeRotationPlaner.Core
          */
 
         // PropertyChanged ist ein Event vom Typ PropertyChangedEventHandler
-        /* Event ist in C# eine Art Benachrichtigung, die ausgelöst wird, wenn etwas Bestimmtes passiert – in diesem Fall eine Änderung an einer Eigenschaft. */
+        /* Event ist in C# eine Art Benachrichtigung, die ausgelöst wird, 
+         * wenn etwas Bestimmtes passiert – in diesem Fall eine Änderung an einer Eigenschaft. */
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string? name = null)

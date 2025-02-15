@@ -31,18 +31,16 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
      * wenn auf speichern geklickt, muss selektierte beruf in trainee objekt getan. services, mapper, repo die id enthält.
      * 
      */
-    public class TraineeViewModel : INotifyPropertyChanged
+    public class TraineeViewModel : INotifyPropertyChanged // TODO ??? ObservableObject   //
     {
 
-        public ObservableCollection<Profession> Professions { get; set; } = new ObservableCollection<Profession>();  // TODO: A
+        public ObservableCollection<Profession> Professions { get; set; }  = new ObservableCollection<Profession>();  // TODO: A
         public ICommand ExportCommand { get; } // TODO: Excel Export
 
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private TraineeService _traineeService; // Deklaration. noch nicht gefüllt
-
-
 
 
         public int Id { get; set; }
@@ -200,10 +198,10 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             var trainees = _traineeService.Get(); // sobald der Service da ist, werden mit get alle Trainees über das Repo aus DB gefüllt
             Trainees = new ObservableCollection<Trainee>(trainees); // Trainees binding im xaml
 
-            // Berufe an dieser Stelle laden // TODO ???
+            // Berufe an dieser Stelle laden statt im Command
             var professions = MainWindow.ProfessionService.Get();  // Holt Berufe aus dem Service
             Professions = new ObservableCollection<Profession>(professions);  // Bindet die Berufe an die ObservableCollection --> Combobox in View
-            //MessageBox.Show("bis hier ok");
+
 
             SaveTraineeCommand = new RelayCommand(o =>
             {
@@ -224,13 +222,13 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             var csvContent = new StringBuilder();
 
             // Kopfzeile der CSV-Datei
-            csvContent.AppendLine("Vorname,Nachname,Kürzel,Ausbildungsbeginn,Ausbildungsende,Lehrjahr,Beruf,Herkunft");
+            csvContent.AppendLine("Vorname,Nachname,Kürzel,Ausbildungsbeginn,Ausbildungsende,Lehrjahr,Beruf");
 
             // Durchlaufen aller Trainees und hinzufügen der Daten
             foreach (var trainee in Trainees)
             {
                 // Für jedes Trainee-Objekt fügen wir eine Zeile in der CSV hinzu
-                csvContent.AppendLine($"{trainee.FirstName},{trainee.LastName},{trainee.Abbreviation},{trainee.EducationStart.ToShortDateString()},{trainee.EducationEnd.ToShortDateString()},{trainee.EducationYear},{trainee.Profession.ProfessionName},{trainee.Homebase}");
+                csvContent.AppendLine($"{trainee.FirstName},{trainee.LastName},{trainee.Abbreviation},{trainee.EducationStart.ToShortDateString()},{trainee.EducationEnd.ToShortDateString()},{trainee.EducationYear},{trainee.Profession.ProfessionName}");
             }
 
             // Datei speichern (z.B. unter "Trainees.csv")

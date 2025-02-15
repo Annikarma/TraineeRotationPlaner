@@ -37,6 +37,7 @@
 
         // TODO: oder so?
         public Trainee(int id, string lastName, string firstName, string abbreviation, DateOnly educationStart, DateOnly educationEnd, int educationYear, string homebase, int professionId)
+
         { 
             Id = id;
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
@@ -49,10 +50,10 @@
             ProfessionId = professionId;
             //Profession = profession ?? throw new ArgumentNullException(nameof(profession));
 
-            if (Profession.Id != professionId)
-            {
-                throw new ArgumentException("Die Profession-ID stimmt nicht mit dem übergebenen Objekt überein.");
-            }
+            //if (Profession?.Id != professionId)
+            //{
+            //    throw new ArgumentException("Die Profession-ID stimmt nicht mit dem übergebenen Objekt überein.");
+            //}
         }
     }
 }
