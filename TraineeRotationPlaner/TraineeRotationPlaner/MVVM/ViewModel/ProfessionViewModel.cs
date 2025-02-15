@@ -24,6 +24,10 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+        /*
+         * Eigenschaften (wie Name, Abbreviation, SelectedProfession) stellen die privaten Felder öffentlich zur Verfügung und 
+         * ermöglichen es, dass das UI automatisch auf Änderungen reagiert (durch die Verwendung von INotifyPropertyChanged und der OnPropertyChanged-Methode).
+         */
 
         private string _abbreviation { get; set; } = string.Empty;
         public string Abbreviation 
@@ -36,13 +40,13 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             }
         }
 
-
-
         public ObservableCollection<Profession> Professions { get; set; } = new();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private Profession _selectedProfession;
+
+        // SelectedProfession-Eigenschaft definieren, die das aktuell ausgewählte Element aus der ListView hält.
         public Profession SelectedProfession
         {
             get { return _selectedProfession; }
@@ -52,7 +56,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
                 Id = _selectedProfession.Id;
                 Name = _selectedProfession.ProfessionName; // Wenn der name des selektierten Profession-Objekt in PreName gesetzt wird, dann wird das UI aktualisiert
                 Abbreviation = _selectedProfession.Abbreviation;
-
+                OnPropertyChanged();
             }
         }
 
@@ -82,3 +86,8 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
     }
 }
 
+/*
+ * 
+ * Im Wesentlichen stellt sie die Daten für die Benutzeroberfläche zur Verfügung und sorgt dafür, 
+ * dass die Benutzeroberfläche automatisch aktualisiert wird, wenn sich diese Daten ändern.
+ */

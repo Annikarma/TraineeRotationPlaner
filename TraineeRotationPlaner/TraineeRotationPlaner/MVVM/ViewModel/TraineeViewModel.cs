@@ -183,7 +183,8 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
                 EducationEnd = _selectedTrainee.EducationEnd;
                 EducationYear = _selectedTrainee.EducationYear;
                 Homebase = _selectedTrainee.Homebase;
-                Profession = _selectedTrainee.Profession;             // TODO ??? 
+                //Profession = _selectedTrainee.Profession;
+                OnPropertyChanged();
             }
         }
 

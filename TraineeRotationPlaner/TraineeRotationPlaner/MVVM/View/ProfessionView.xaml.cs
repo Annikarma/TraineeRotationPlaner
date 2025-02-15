@@ -12,17 +12,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TraineeRotationPlaner.MVVM.ViewModel;
 
-namespace TraineeRotationPlaner.MVVM.View
+namespace TraineeRotationPlaner.MVVM.View;
+
+/// <summary>
+/// Interaktionslogik für ProfessionView.xaml
+/// </summary>
+public partial class ProfessionView : UserControl
 {
-    /// <summary>
-    /// Interaktionslogik für ProfessionView.xaml
-    /// </summary>
-    public partial class ProfessionView : UserControl
+    public ProfessionView()
     {
-        public ProfessionView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
+
+    
+
+    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+
     }
 }

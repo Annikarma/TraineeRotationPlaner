@@ -1,10 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
     <Style TargetType="ListView" x:Key="MyStyledListView">
-        <Setter Property="Background" Value="WhiteSmoke" />   <!-- Helles Grau für HG   -->
-        <Setter Property="BorderThickness" Value="0" />        <!-- Kein Rand -->
+        <Setter Property="Background" Value="#F5F5F5" />
+        <!-- Helles Grau für HG   -->
+        <Setter Property="BorderThickness" Value="0" />
+        <!-- Kein Rand -->
         <Setter Property="BorderBrush" Value="#D3D3D3" />
+        <Setter Property="Background" Value="#FFFFFF" />
         <Setter Property="Margin" Value="10" />
         <Setter Property="Padding" Value="5" />
 
@@ -12,26 +14,30 @@
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="Margin" Value="2" />       <!-- Zellenbegrenzung -->
+                    <Setter Property="Margin" Value="1" />
+                    <!-- Zellenbegrenzung -->
                     <Setter Property="Padding" Value="8,5,8,5" />
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     <Setter Property="VerticalContentAlignment" Value="Center" />
-                    <Setter Property="Background" Value="WhiteSmoke" />
+                    <Setter Property="Background" Value="#E0E0E0" />
                     <!-- <Setter Property="BorderBrush" Value="Transparent" />      Zellenbegrenzung -->
-                    <Setter Property="BorderBrush" Value="#D3D3D3" />         <!-- Zellenbegrenzung -->
-                    <Setter Property="BorderThickness" Value="1,0,0,1" />      <!-- Untere Linie für Zellenbegrenzung -->
+                    <Setter Property="BorderBrush" Value="#D3D3D3" />
+                    <!-- Zellenbegrenzung -->
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                    <!-- Untere Linie für Zellenbegrenzung -->
 
                     <!-- Hover und Auswahl-->
                     <Style.Triggers>
                         <!-- Hintergrundfarbe bei Hover -->
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="cyan" />
+                            <Setter Property="Background" Value="DarkSeaGreen" />
                             <!-- Helleres Grau bei Hover -->
                         </Trigger>
 
                         <!-- Hintergrundfarbe bei Auswahl -->
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="#C0C0C0" />    <!-- Noch dunkleres Grau bei Auswahl -->
+                            <Setter Property="Background" Value="#C0C0C0" />
+                            <!-- Noch dunkleres Grau bei Auswahl -->
                         </Trigger>
                     </Style.Triggers>
 
