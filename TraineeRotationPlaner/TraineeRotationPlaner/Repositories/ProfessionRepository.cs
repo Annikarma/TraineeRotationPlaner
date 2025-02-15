@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.Sqlite;
+using System.Windows;
 using TraineeRotationPlaner.Models;
 
 namespace TraineeRotationPlaner.Repositories
@@ -31,6 +32,8 @@ namespace TraineeRotationPlaner.Repositories
             try
             {
                 Connection?.Execute(sql);
+                settingCoreValues();
+
             }
             catch (Exception ex)
             {
@@ -44,7 +47,44 @@ namespace TraineeRotationPlaner.Repositories
 
         }
 
+        public void settingCoreValues()
+        {
+            string countValuesInDB = "SELECT COUNT(*) FROM Professions";
+            int count = Connection.ExecuteScalar<int>(countValuesInDB); // Scalar: gibt einen einzelnen Wert zurück
 
+            if (count == 0)
+            {
+                string insertSql = """
+                    INSERT INTO Professions (Name, Abbreviation) VALUES 
+                    (@Name1, @Abbreviation1),
+                    (@Name2, @Abbreviation2),
+                    (@Name3, @Abbreviation3),
+                    (@Name4, @Abbreviation4);
+                    """;
+
+                var coreParam = new
+                {
+                    Name1 = "Anwendungsentwicklung",
+                    Abbreviation1 = "FiAe",
+                    Name2 = "Systemintegration",
+                    Abbreviation2 = "FiSy",
+                    Name3 = "KaufmannIT",
+                    Abbreviation3 = "KfIT",
+                    Name4 = "Kaufmann Büro",
+                    Abbreviation4 = "KfB",
+                };
+
+                try
+                {
+                    Connection?.Execute(insertSql, coreParam);
+                }
+                catch
+                {
+                    MessageBox.Show("Ups");
+                    throw;
+                }
+            }
+        }
 
         /// <summary>
         /// Add a new Profession in DB.
@@ -62,7 +102,7 @@ namespace TraineeRotationPlaner.Repositories
 
             object param = new
             {
-                Name = profession.Name,
+                Name = profession.ProfessionName,
                 Abbreviation = profession.Abbreviation,
             };
 
@@ -139,7 +179,7 @@ namespace TraineeRotationPlaner.Repositories
 
             var param = new
             {
-                Name = profession.Name,
+                Name = profession.ProfessionName,
                 Abbreviation = profession.Abbreviation,
             };
 

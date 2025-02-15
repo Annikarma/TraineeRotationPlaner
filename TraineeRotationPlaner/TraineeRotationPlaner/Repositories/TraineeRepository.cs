@@ -71,6 +71,8 @@ namespace TraineeRotationPlaner.Repositories
             // Werte aus Trainee zu TraineeEntity konvertieren, um Datum in Text umzuwandeln
             var traineeEntity = TraineeMapper.MapToEntity(trainee);
 
+            //var 
+
             object param = new
             {
                 LastName = traineeEntity.LastName,
@@ -79,7 +81,7 @@ namespace TraineeRotationPlaner.Repositories
                 EducationStart = traineeEntity.EducationStart,
                 EducationEnd = traineeEntity.EducationEnd,
                 EducationYear = traineeEntity.EducationYear,
-                ProfessionId = traineeEntity.ProfessionId,
+                ProfessionId = traineeEntity.ProfessionId
             };
 
             try

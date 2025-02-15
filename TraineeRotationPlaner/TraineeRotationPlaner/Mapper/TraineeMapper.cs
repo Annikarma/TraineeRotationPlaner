@@ -5,6 +5,11 @@ namespace TraineeRotationPlaner.Mapper
 {
     internal class TraineeMapper
     {
+        /// <summary>
+        /// mapt einen Trainee in ein Entity. Datum als String gespeichert, da Sqlite keine Date unterstützt.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static TraineeEntity MapToEntity(Trainee source)
         {
             return new TraineeEntity()
@@ -19,6 +24,11 @@ namespace TraineeRotationPlaner.Mapper
             };
         }
 
+        /// <summary>
+        /// String-Datum wird in ein Date gewandelt
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static Trainee MapToModel(TraineeEntity source)
         {
             return new Trainee()

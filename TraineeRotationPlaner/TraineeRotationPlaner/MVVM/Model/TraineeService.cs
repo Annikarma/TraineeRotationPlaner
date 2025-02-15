@@ -9,7 +9,6 @@ namespace TraineeRotationPlaner.MVVM.Model
     /// </summary>
     public class TraineeService
     {
-        private ILogger? _logger; // Das Interface fürs Logging ist zwar schon da, aber es steckt noch keine Logger-Instanz drin
         private TraineeRepository _traineeRepository;
 
         public TraineeService()
@@ -56,7 +55,7 @@ namespace TraineeRotationPlaner.MVVM.Model
             }
             catch (Exception ex)
             {
-                _logger?.LogError(ex, "Getting trainees failed");
+               // _logger?.LogError(ex, "Getting trainees failed");
                 throw;
             }
         }
@@ -71,7 +70,6 @@ namespace TraineeRotationPlaner.MVVM.Model
             }
             catch (Exception ex)
             {
-                _logger?.LogError(ex, "Getting trainees with id {id} failed", id);
                 throw;
             }
         }
@@ -84,7 +82,6 @@ namespace TraineeRotationPlaner.MVVM.Model
             }
             catch (Exception ex)
             {
-                _logger?.LogError(ex, "Deleting Trainee with id {id} failed", id);
                 throw;
             }
         }

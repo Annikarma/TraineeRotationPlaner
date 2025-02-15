@@ -63,7 +63,7 @@
         <Label Content="HOMEBASE" Grid.Row="6" Grid.Column="1" Style="{StaticResource MyLabelStyle}" />
 
         <!-- Zeile 7-->
-        <ComboBox Grid.Row="6" Grid.Column="0" ItemsSource="{Binding Professions}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProfession}" Style="{StaticResource MyComboboxStyle}"  Margin="0,21,0,0" Grid.RowSpan="2" />
+        <ComboBox Grid.Row="6" Grid.Column="0" ItemsSource="{Binding Professions}" DisplayMemberPath="ProfessionName" SelectedItem="{Binding Profession}" Style="{StaticResource MyComboboxStyle}"  Margin="0,21,0,0" Grid.RowSpan="2" />
         <TextBox Grid.Row="7" Grid.Column="1" Style="{StaticResource MyTextboxStyle}" />
 
         <Label x:Name="LeerZeile8" Content="" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left" FontSize="6" />
@@ -80,10 +80,6 @@
                     <GridViewColumn DisplayMemberBinding="{Binding PreName}" Header="Vorname" />
                     <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
                     <GridViewColumn DisplayMemberBinding="{Binding Abbreviation}" Header="Kürzel" />
-                    <GridViewColumn DisplayMemberBinding="{Binding EducationBegin}" Header="Beginn" />
-                    <GridViewColumn DisplayMemberBinding="{Binding EducationEnd}" Header="Ende" />
-                    <GridViewColumn DisplayMemberBinding="{Binding EducationYear}" Header="Lj" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Profession}" Header="Beruf" />
                 </GridView>
             </ListView.View>
         </ListView>

@@ -50,7 +50,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             {
                 _selectedProfession = value;
                 Id = _selectedProfession.Id;
-                Name = _selectedProfession.Name; // Wenn der name des selektierten Profession-Objekt in PreName gesetzt wird, dann wird das UI aktualisiert
+                Name = _selectedProfession.ProfessionName; // Wenn der name des selektierten Profession-Objekt in PreName gesetzt wird, dann wird das UI aktualisiert
                 Abbreviation = _selectedProfession.Abbreviation;
 
             }

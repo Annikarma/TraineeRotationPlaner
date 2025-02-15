@@ -31,7 +31,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Content="NAME (BERUF)" Grid.Column="0" Grid.Row="0" Style="{StaticResource MyLabelStyle}"/>
+        <Label Content="BERUF" Grid.Column="0" Grid.Row="0" Style="{StaticResource MyLabelStyle}"/>
         <TextBox Grid.Column="0" Grid.Row="1" Style="{StaticResource MyTextboxStyle}" />
 
         <Label Content="KÜRZEL" Grid.Column="0" Grid.Row="3" Style="{StaticResource MyLabelStyle}" />

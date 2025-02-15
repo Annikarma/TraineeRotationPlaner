@@ -7,7 +7,7 @@ namespace TraineeRotationPlaner.MVVM.Model
 {
     public class ProfessionService
     {
-        private ILogger? _logger; // Das Interface fürs Logging ist zwar schon da, aber es steckt noch keine Logger-Instanz drin
+        //private ILogger? _logger; // Das Interface fürs Logging ist zwar schon da, aber es steckt noch keine Logger-Instanz drin
         private ProfessionRepository _professionRepository;
 
         public ProfessionService()
@@ -54,7 +54,7 @@ namespace TraineeRotationPlaner.MVVM.Model
             }
             catch (Exception ex)
             {
-                _logger?.LogError(ex, "Getting professions failed");
+                //_logger?.LogError(ex, "Getting professions failed");
                 throw;
             }
         }
@@ -68,7 +68,7 @@ namespace TraineeRotationPlaner.MVVM.Model
             }
             catch (Exception ex)
             {
-                _logger?.LogError(ex, "Getting profession with id {id} failed", id);
+               // _logger?.LogError(ex, "Getting profession with id {id} failed", id);
                 throw;
             }
         }
@@ -81,7 +81,7 @@ namespace TraineeRotationPlaner.MVVM.Model
             }
             catch (Exception ex)
             {
-                _logger?.LogError(ex, "Deleting profession with id {id} failed", id);
+               //_logger?.LogError(ex, "Deleting profession with id {id} failed", id);
                 throw;
             }
         }

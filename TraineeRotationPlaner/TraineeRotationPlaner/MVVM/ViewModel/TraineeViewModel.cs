@@ -38,9 +38,12 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         public ICommand ExportCommand { get; } // TODO: Excel Export
 
 
-        public event PropertyChangedEventHandler? PropertyChanged; 
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private TraineeService _traineeService; // Deklaration. noch nicht gefüllt
+
+
+
 
         public int Id { get; set; }
 
@@ -86,14 +89,14 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
 
         private DateOnly _educationStart;
 
         public DateOnly EducationStart
         {
-            get 
-            { 
+            get
+            {
                 return _educationStart;
             }
             set
@@ -125,7 +128,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
                 return _educationYear;
             }
             set
-            { 
+            {
                 _educationYear = value;
                 OnPropertyChanged();
             }
@@ -163,7 +166,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         // Liste aller gesammelter Trainees - Liste inital erstellen
         public ObservableCollection<Trainee> Trainees { get; set; } = new();
 
-        private Trainee _selectedTrainee; 
+        private Trainee _selectedTrainee;
 
         private Trainee SelectedTrainee
         {
@@ -182,7 +185,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
                 EducationEnd = _selectedTrainee.EducationEnd;
                 EducationYear = _selectedTrainee.EducationYear;
                 Homebase = _selectedTrainee.Homebase;
-                Profession = _selectedTrainee.Profession;              
+                Profession = _selectedTrainee.Profession;             // TODO ??? 
             }
         }
 
@@ -197,15 +200,19 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             var trainees = _traineeService.Get(); // sobald der Service da ist, werden mit get alle Trainees über das Repo aus DB gefüllt
             Trainees = new ObservableCollection<Trainee>(trainees); // Trainees binding im xaml
 
+            // Berufe an dieser Stelle laden // TODO ???
+            var professions = MainWindow.ProfessionService.Get();  // Holt Berufe aus dem Service
+            Professions = new ObservableCollection<Profession>(professions);  // Bindet die Berufe an die ObservableCollection --> Combobox in View
+            //MessageBox.Show("bis hier ok");
 
             SaveTraineeCommand = new RelayCommand(o =>
             {
-                Trainee trainee = new Trainee(Id, LastName, FirstName, Abbreviation, EducationStart, EducationEnd, EducationYear, Homebase, Profession ); // Objekt für Datentransport erstellen und füllen
+                Trainee trainee = new Trainee(Id, LastName, FirstName, Abbreviation, EducationStart, EducationEnd, EducationYear, Homebase, Profession); // Objekt für Datentransport erstellen und füllen
                 _traineeService.Save(trainee); // Objekt über den Service speichern
                 Trainees.Add(trainee); // Hinzufügen des gespeicherten Trainee-Objektes in ListView
                 var professions = MainWindow.ProfessionService.Get();  // Holt Berufe aus dem Service
-                Professions = new ObservableCollection<Profession>(professions);  // Bindet die Berufe an die ObservableCollection
-                
+                Professions = new ObservableCollection<Profession>(professions);  // Bindet die Berufe an die ObservableCollection --> Combobox in View
+
                 // TODO: A Die Professions-Eigenschaft wird nun in der TraineeViewModel-Klasse mit einer Liste von Berufen gefüllt, die dann in der View gebunden wird.
             });
 
@@ -223,7 +230,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             foreach (var trainee in Trainees)
             {
                 // Für jedes Trainee-Objekt fügen wir eine Zeile in der CSV hinzu
-                csvContent.AppendLine($"{trainee.FirstName},{trainee.LastName},{trainee.Abbreviation},{trainee.EducationStart.ToShortDateString()},{trainee.EducationEnd.ToShortDateString()},{trainee.EducationYear},{trainee.Profession.Name},{trainee.Homebase}");
+                csvContent.AppendLine($"{trainee.FirstName},{trainee.LastName},{trainee.Abbreviation},{trainee.EducationStart.ToShortDateString()},{trainee.EducationEnd.ToShortDateString()},{trainee.EducationYear},{trainee.Profession.ProfessionName},{trainee.Homebase}");
             }
 
             // Datei speichern (z.B. unter "Trainees.csv")
@@ -236,7 +243,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
 
         private void OnPropertyChanged([CallerMemberName] string? name = null)
         {
-            PropertyChanged?.Invoke( this, new PropertyChangedEventArgs(name));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
