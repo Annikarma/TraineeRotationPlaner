@@ -35,7 +35,7 @@ namespace TraineeRotationPlaner.Repositories
                     EducationEnd DATE NOT NULL,  
                     EducationYear INTEGER NOT NULL,  
                     ProfessionId INTEGER, 
-                    FOREIGN KEY (ProfessionId) REFERENCES Profession(Id)  
+                    FOREIGN KEY (ProfessionId) REFERENCES Professions(Id)  
                 );
                 """;
             try
@@ -61,6 +61,11 @@ namespace TraineeRotationPlaner.Repositories
             if (trainee == null)
             {
                 throw new ArgumentException("Trainee darf nicht null sein.");
+                // Prüfe, ob das Trainee-Objekt gültig ist
+                if (string.IsNullOrEmpty(trainee.LastName) || trainee.Profession == null)
+                {
+                    throw new InvalidOperationException("Trainee must have a valid name and profession.");
+                }
             }
 
             string sql = """ 
@@ -113,6 +118,7 @@ namespace TraineeRotationPlaner.Repositories
             t.Id, 
             t.LastName, 
             t.FirstName, 
+            t.Abbreviation,
             t.ProfessionId, 
             p.Name AS ProfessionName, 
             t.EducationStart, 

@@ -35,13 +35,14 @@
         <!-- <Label Content="VORNAME" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Background="{StaticResource Lieblingsfarbe}" /> Variante 1   -->
         <Label Content="VORNAME" Grid.Row="0" Grid.Column="0" Style="{StaticResource MyLabelStyle}" />
         <Label Content="NACHNAME" Grid.Row="0" Grid.Column="1" Style="{StaticResource MyLabelStyle}" />
-        <Label Content="KÜRZEL" Grid.Row="0" Grid.Column="2" Style="{StaticResource MyLabelStyle}" />
+        <Label Content="KUERZEL" Grid.Row="0" Grid.Column="2" Style="{StaticResource MyLabelStyle}" />
 
         <!-- Zeile 1-->
         <TextBox Tag="VORNAME" x:Name="TextBox1" Grid.Row="1" Grid.Column="0" Text="{Binding FirstName}" Style="{StaticResource MyTextboxStyle}" />
         <TextBox Tag="NACHNAME" x:Name="TextBox2" Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" Style="{StaticResource MyTextboxStyle}" />
-        <TextBox Tag="KÜRZEL" x:Name="TextBox3" Grid.Row="1" Grid.Column="2" Text="{Binding Abbreviation}" Width="60" Style="{StaticResource MyTextboxStyle}" />
+        <TextBox Tag="KUERZEL" x:Name="TextBox3" Grid.Row="1" Grid.Column="2" Text="{Binding Abbreviation}"  Width="60" Style="{StaticResource MyTextboxStyle}" />
         <TextBox Grid.Row="1" Grid.Column="2" Width="60" HorizontalAlignment="Left" Style="{StaticResource MyTextboxStyle}" />
+  
 
         <!-- Zeile 2  Leerzeile-->
         <Label x:Name="LeerZeile2" Content="" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" FontSize="6" />

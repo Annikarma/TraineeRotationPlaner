@@ -70,7 +70,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             }
             set
             {
-                _firstName = value;
+                _firstName = value;   // reagiert
                 OnPropertyChanged();
 
             }
@@ -207,11 +207,11 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
 
             SaveTraineeCommand = new RelayCommand(o =>
             {
-                Trainee trainee = new Trainee(Id, LastName, FirstName, Abbreviation, EducationStart, EducationEnd, EducationYear, Homebase, Profession); // Objekt für Datentransport erstellen und füllen
+                Trainee trainee = new Trainee(Id, LastName, FirstName, Abbreviation, EducationStart, EducationEnd, EducationYear, Homebase, Profession.Id); // Objekt für Datentransport erstellen und füllen
                 _traineeService.Save(trainee); // Objekt über den Service speichern
                 Trainees.Add(trainee); // Hinzufügen des gespeicherten Trainee-Objektes in ListView
-                var professions = MainWindow.ProfessionService.Get();  // Holt Berufe aus dem Service
-                Professions = new ObservableCollection<Profession>(professions);  // Bindet die Berufe an die ObservableCollection --> Combobox in View
+                //var professions = MainWindow.ProfessionService.Get();  // Holt Berufe aus dem Service
+                // Professions = new ObservableCollection<Profession>(professions);  // Bindet die Berufe an die ObservableCollection --> Combobox in View
 
                 // TODO: A Die Professions-Eigenschaft wird nun in der TraineeViewModel-Klasse mit einer Liste von Berufen gefüllt, die dann in der View gebunden wird.
             });

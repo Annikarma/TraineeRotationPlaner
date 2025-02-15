@@ -200,7 +200,7 @@ namespace TraineeRotationPlaner.Repositories
         public void Delete(int id)
         {
             string sql = """
-                DELETE FROM Profession WHERE Id = @Id
+                DELETE FROM Professions WHERE Id = @Id
                 """;
 
             var param = new { Id = id };
