@@ -1,20 +1,13 @@
-﻿using SQLitePCL;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using TraineeRotationPlaner.Core;
 using TraineeRotationPlaner.Models;
 using TraineeRotationPlaner.MVVM.Model;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TraineeRotationPlaner.MVVM.ViewModel
 {
@@ -34,7 +27,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
     public class TraineeViewModel : INotifyPropertyChanged // TODO ??? ObservableObject   //
     {
 
-        public ObservableCollection<Profession> Professions { get; set; }  = new ObservableCollection<Profession>();  // TODO: A
+        public ObservableCollection<Profession> Professions { get; set; } // TODO: A
         public ICommand ExportCommand { get; } // TODO: Excel Export
 
 
@@ -48,10 +41,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         private string _lastName = string.Empty;
         public string LastName
         {
-            get
-            {
-                return _lastName;
-            }
+            get => _lastName;
             set
             {
                 _lastName = value;
@@ -62,10 +52,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         private string _firstName;
         public string FirstName
         {
-            get
-            {
-                return _firstName;
-            }
+            get => _firstName;
             set
             {
                 _firstName = value;   // reagiert
@@ -77,10 +64,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         private string _abbreviation;
         public string Abbreviation
         {
-            get
-            {
-                return _abbreviation;
-            }
+            get => _abbreviation;
             set
             {
                 _abbreviation = value;
@@ -93,10 +77,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
 
         public DateOnly EducationStart
         {
-            get
-            {
-                return _educationStart;
-            }
+            get => _educationStart;
             set
             {
                 _educationStart = value;
@@ -107,10 +88,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         private DateOnly _educationEnd;
         public DateOnly EducationEnd
         {
-            get
-            {
-                return _educationEnd;
-            }
+            get => _educationEnd;
             set
             {
                 _educationEnd = value;
@@ -121,10 +99,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         private int _educationYear;
         public int EducationYear
         {
-            get
-            {
-                return _educationYear;
-            }
+            get => _educationYear;
             set
             {
                 _educationYear = value;
@@ -135,10 +110,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         private string _homebase;
         public string Homebase
         {
-            get
-            {
-                return _homebase;
-            }
+            get => _homebase;
             set
             {
                 _homebase = value;
@@ -149,10 +121,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
         private Profession _profession;
         public Profession Profession
         {
-            get
-            {
-                return _profession;
-            }
+            get => _profession;
             set
             {
                 _profession = value;
@@ -168,10 +137,7 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
 
         private Trainee SelectedTrainee
         {
-            get
-            {
-                return _selectedTrainee;
-            }
+            get => _selectedTrainee;
             set
             {
                 _selectedTrainee = value;
@@ -202,7 +168,6 @@ namespace TraineeRotationPlaner.MVVM.ViewModel
             // Berufe an dieser Stelle laden statt im Command
             var professions = MainWindow.ProfessionService.Get();  // Holt Berufe aus dem Service
             Professions = new ObservableCollection<Profession>(professions);  // Bindet die Berufe an die ObservableCollection --> Combobox in View
-
 
             SaveTraineeCommand = new RelayCommand(o =>
             {
